@@ -3,6 +3,9 @@ import handleCallout from "@salesforce/apex/ViaCepWebService.handleCallout";
 
 export default class BuscadorCEPs extends LightningElement {
     cep;
+    cidadeUF;
+    erroCEP = false;
+    obj = {};
 
     handleInput(event) {
 		const x = event.target.value
@@ -21,11 +24,29 @@ export default class BuscadorCEPs extends LightningElement {
     handleCallout() {
         handleCallout({ cep: this.cep })
             .then(result => {
-                console.log('Resultado: ' + result);
+                if(result.erro == 'true') {
+                    this.erroCEP = true;
+                } else {
+                    this.handleFields(result);
+                }
             })
             .catch(error => {
-                this.error = error;
-                console.log('Erro: ' + this.error);
+                console.log('Erro: ' + error);
             })
+    }
+
+    clearFields() {
+        this.template.querySelectorAll('lightning-input').forEach(element => {
+            element.value = null;
+        });
+
+        // you can also reset one by one by id
+        // this.template.querySelector('lightning-input[data-id="form"]').value = null; 
+    }
+
+    handleFields(result) {
+        this.erroCEP = false;
+        this.obj = result;
+        this.cidadeUF = result.localidade + '/' + result.uf;
     }
 }

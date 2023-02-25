@@ -2,23 +2,28 @@
     <lightning-card variant="base"  title="Buscador de CEPs" icon-name="standard:address">
         <lightning-layout multiple-rows horizontal-align="center">
             <lightning-layout-item size="6" >
-                <lightning-input type="text" onchange={handleInput} maxlength="9" placeholder="Digite o CEP"> </lightning-input>
+                <lightning-input class="cep" type="text" onchange={handleInput} maxlength="9" placeholder="Digite o CEP"> </lightning-input>
+                <template if:true={erroCEP}>
+                    <div style="color: red; font-weight: 500;">
+                        CEP inválido!
+                    </div>
+                </template>
             </lightning-layout-item>
 
             <lightning-layout-item size="12" padding="horizontal-small">
-                <lightning-input disabled="true" type="text" placeholder="Rua"> </lightning-input>
+                <lightning-input disabled="true" value={obj.logradouro} type="text" placeholder="Rua" data-id="form"> </lightning-input>
             </lightning-layout-item>
 
             <lightning-layout-item size="6" padding="horizontal-small">
-                <lightning-input disabled="true" type="text" placeholder="Bairro"> </lightning-input>
+                <lightning-input disabled="true" value={obj.bairro} type="text" placeholder="Bairro"> </lightning-input>
             </lightning-layout-item>
 
             <lightning-layout-item size="6" padding="horizontal-small">
-                <lightning-input disabled="true" type="text" placeholder="Cidade/UF"> </lightning-input>
+                <lightning-input disabled="true" value={cidadeUF} type="text" placeholder="Cidade/UF"> </lightning-input>
             </lightning-layout-item>
 
             <lightning-layout-item padding="around-small">
-                <lightning-button class="btn" label="Limpar" variant="brand"></lightning-button>
+                <lightning-button class="btn" onclick={clearFields} label="Limpar" variant="brand"></lightning-button>
             </lightning-layout-item>
         </lightning-layout>
     </lightning-card>
