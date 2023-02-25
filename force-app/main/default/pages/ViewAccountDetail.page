@@ -1,0 +1,7 @@
+<apex:page id="ViewAccountDetail" sidebar="false" showHeader="true" docType="html-5.0" standardController="Account">
+	<apex:form >
+		<apex:pageBlock mode="maindetail">
+			<apex:detail title="true" subject="{!Account.Id}" />
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

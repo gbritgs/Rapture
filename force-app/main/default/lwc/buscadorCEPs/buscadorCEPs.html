@@ -1,0 +1,25 @@
+<template>
+    <lightning-card variant="base"  title="Buscador de CEPs" icon-name="standard:address">
+        <lightning-layout multiple-rows horizontal-align="center">
+            <lightning-layout-item size="6" >
+                <lightning-input type="text" onchange={handleInput} maxlength="9" placeholder="Digite o CEP"> </lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" padding="horizontal-small">
+                <lightning-input disabled="true" type="text" placeholder="Rua"> </lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="6" padding="horizontal-small">
+                <lightning-input disabled="true" type="text" placeholder="Bairro"> </lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="6" padding="horizontal-small">
+                <lightning-input disabled="true" type="text" placeholder="Cidade/UF"> </lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small">
+                <lightning-button class="btn" label="Limpar" variant="brand"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

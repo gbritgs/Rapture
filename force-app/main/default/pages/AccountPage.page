@@ -1,0 +1,15 @@
+<apex:page id="AccountPage" sidebar="false" showHeader="true" docType="html-5.0" standardController="Account" extensions="AccountControllerExtension">
+	<apex:form id="accountForm">
+		<apex:pageBlock mode="edit">
+			<apex:pageBlockSection title="Account Information" columns="2">
+				<apex:inputField value="{!account.Name}" />
+				<apex:inputField value="{!account.Site}" />
+				<apex:inputField value="{!account.Phone}" />
+			</apex:pageBlockSection>
+			<apex:pageBlockButtons location="bottom">
+				<apex:commandButton value="Save" action="{!saveAccount}" />
+			</apex:pageBlockButtons>
+			<c:ContractList list="{!listContact}" newContactAction="{!addContact}" deleteContactAction="{!deleteContact}" />
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

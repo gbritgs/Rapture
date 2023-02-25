@@ -1,0 +1,47 @@
+<apex:component >
+	<apex:attribute name="list" type="Contact[]" required="true" description="" />
+	<apex:attribute name="newContactAction" type="ApexPages.Action" required="true" description="" />
+	<apex:attribute name="deleteContactAction" type="ApexPages.Action" required="true" description="" />
+
+	<apex:actionFunction name="addContact" action="{!newContactAction}" reRender="contactInformation" immediate="true" />
+	<apex:actionFunction name="deleteContact" action="{!deleteContactAction}" reRender="contactInformation" immediate="true">
+		<apex:param name="index" value="" />
+	</apex:actionFunction>
+
+	<apex:pageBlockSection title="Contact Information" columns="1" id="contactInformation">
+		<apex:pageBlockSectionItem >
+			<button type="button" onclick="addContact();">
+				Add Contact
+			</button>
+		</apex:pageBlockSectionItem>
+		<apex:variable var="index" value="{!0}" />
+		<apex:pageBlockSectionItem >
+			<apex:pageBlockTable value="{!list}" var="contact">
+				<apex:column >
+					<apex:facet name="header" />
+					<a href="_" onclick="deleteContact({!index});return false;"> Delete </a>
+					<apex:variable var="index" value="{!index + 1}" />
+				</apex:column>
+				<apex:column >
+					<apex:facet name="header">
+						First Name
+					</apex:facet>
+					<apex:inputField value="{!contact.FirstName}" />
+				</apex:column>
+				<apex:column >
+					<apex:facet name="header">
+						Last Name
+					</apex:facet>
+					<apex:inputField value="{!contact.LastName}" />
+				</apex:column>
+				<apex:column >
+					<apex:facet name="header">
+						E-mail
+					</apex:facet>
+					<apex:inputField value="{!contact.Email}" />
+				</apex:column>
+			</apex:pageBlockTable>
+		</apex:pageBlockSectionItem>
+	</apex:pageBlockSection>
+
+</apex:component>

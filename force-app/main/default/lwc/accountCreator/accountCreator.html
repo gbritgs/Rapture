@@ -1,0 +1,22 @@
+<template>
+	<lightning-card title="Campo Lookup Customizado" icon-name="standard:display_text">
+		<lightning-layout>
+			<lightning-layout-item flexibility="auto" padding="around-small">
+				<c-custom-lookup-field child-object-api-name='Contact' target-field-api-name='AccountId'
+					onvalueselected={handleValueSelected}>
+				</c-custom-lookup-field>
+				ID do contato selecionado: {selectedRecordId}
+			</lightning-layout-item>
+		</lightning-layout>
+
+		<!--
+		<lightning-input name="CPF" label="CPF" value={cpf} pattern="^\d{3}\.\d{3}\.\d{3}\-\d{2}$" maxlength="14"
+			message-when-value-missing="CPF obrigatório" onchange={handleMaskCPF} required>
+		</lightning-input>
+
+		<lightning-input name="Telefone" label="Telefone" value={telefone} pattern="^\(\d{2}\)\d{5}\-\d{4}$"
+			maxlength="15" message-when-value-missing="Telefone obrigatório" onchange={handleMaskTelefone} required>
+		</lightning-input>
+-->
+	</lightning-card>
+</template>

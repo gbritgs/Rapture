@@ -1,0 +1,14 @@
+<template>
+	<lightning-card title="Carga de Dados em CSV" icon-name="doctype:csv" variant="Narrow">
+		<lightning-file-upload accept={acceptedFormats} onuploadfinished={handleUploadFinished} record-id={recordId}>
+		</lightning-file-upload>
+
+		<lightning-button icon-name="utility:download" label="Download" title="Download" onclick={exportToCSV}
+			variant="brand"></lightning-button>
+	</lightning-card>
+
+	<lightning-card title="Contatos Adicionados" icon-name="standard:contact">
+		<lightning-datatable hide-checkbox-column="true" data={acc.data} columns={columns} key-field="id">
+		</lightning-datatable>
+	</lightning-card>
+</template>

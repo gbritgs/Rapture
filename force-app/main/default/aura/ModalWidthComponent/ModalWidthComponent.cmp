@@ -1,0 +1,14 @@
+<aura:component implements="force:lightningQuickAction,lightning:availableForFlowScreens">
+
+	<ltng:require styles="{!$Resource.ModalWidthCSS}" />
+
+	<div class="slds-align_absolute-center">
+		<div align="center" class="slds-page-header__name">
+			<div class="slds-page-header__name-title">
+				<h1>
+					<span class="slds-page-header__title slds-truncate"> Teeeeeeeeeeeeeeeeeest </span>
+				</h1>
+			</div>
+		</div>
+	</div>
+</aura:component>
